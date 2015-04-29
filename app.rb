@@ -15,7 +15,12 @@ include CheckUsers
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
-DataMapper.finalize.auto_upgrade!
+
+
+get '/' do
+  # Call method that send the emails
+  send_emails
+end
 
 def send_emails
   @users = User.all
@@ -24,5 +29,3 @@ def send_emails
   end
 end
 
-# Call method that send the emails
-send_emails
