@@ -15,10 +15,7 @@ include CheckUsers
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
-
-
 get '/' do
-  # Call method that send the emails
   send_emails
 end
 
