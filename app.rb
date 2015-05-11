@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'data_mapper'
-require 'pony'
 
 # HELPERS
 require './helpers/check_birthday_users'
@@ -8,13 +7,10 @@ require './helpers/check_birthday_users'
 # MODELS
 require './models/invitations.rb'
 
-include Code
-include CheckUsers
-
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
 get '/' do
-  send_emails
+  send_invitations
 end
 
 def send_invitations
