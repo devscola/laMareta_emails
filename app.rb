@@ -3,11 +3,9 @@ require 'data_mapper'
 require 'pony'
 
 # HELPERS
-require './helpers/code'
 require './helpers/check_birthday_users'
 
 # MODELS
-require './models/users.rb'
 require './models/invitations.rb'
 
 include Code
@@ -19,7 +17,7 @@ get '/' do
   send_emails
 end
 
-def send_emails
+def send_invitations
   @users = User.all
   if @users.any?
     CheckUsers.check_users_mareta(@users)

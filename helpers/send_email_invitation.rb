@@ -2,15 +2,13 @@
 require 'pony'
 require './helpers/code'
 
-include Code
-
 module InvitationSender
 
   def send_invitation_to(user)
       Pony.mail({:to => user.email,
                  :from => "daviddsrperiodismo@gmail",
                  :subject => 'Happy Birthday¡¡',
-                 :body => "Happy Birthday #{user.name}, you have a free meal with this code #{Code.generate}",
+                 :body => "Happy Birthday #{user.name}, you have a free meal with this code",
                  :via => :smtp,
                  :via_options => {
                    :address              => 'smtp.gmail.com',
