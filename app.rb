@@ -6,6 +6,8 @@ require './helpers/birthday'
 require './models/vip_clients.rb'
 require './models/invitations.rb'
 
+include Birthday
+
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
 get '/' do
@@ -14,6 +16,6 @@ get '/' do
 end
 
 def send_invitations
- return greetings if @vip_clients.any?
+ return Birthday.greetings if @vip_clients.any?
 end
 
