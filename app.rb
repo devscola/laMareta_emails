@@ -6,7 +6,7 @@ require './helpers/birthday'
 require './models/vip_clients.rb'
 require './models/invitations.rb'
 
-helpers Birthday
+include Birthday
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
