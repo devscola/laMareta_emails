@@ -6,7 +6,7 @@ require './helpers/birthday'
 require './models/vip_clients.rb'
 require './models/invitations.rb'
 
-include Birthday
+helpers Birthday, SendMail
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
