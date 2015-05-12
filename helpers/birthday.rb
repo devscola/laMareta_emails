@@ -7,6 +7,7 @@ module Birthday
 
   def greetings(vip_clients)
     vip_clients.each do |client|
+      next unless birthday_is_today?(client)
       SendEmail.invitation_to(client)
     end
   end
