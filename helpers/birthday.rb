@@ -4,6 +4,7 @@ require './helpers/send_email'
 module Birthday
 
   def greetings(vip_clients)
+    include SendEmail
     vip_clients.each do |client|
       next unless birthday_is_today?(client)
       SendEmail.invitation_to(client)
