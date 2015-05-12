@@ -3,7 +3,7 @@ require 'data_mapper'
 
 require './helpers/birthday'
 
-require './models/users.rb'
+require './models/vip_clients.rb'
 require './models/invitations.rb'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
