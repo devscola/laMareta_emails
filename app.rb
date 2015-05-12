@@ -16,8 +16,6 @@ end
 
 def send_invitations
  @vip_clients = VipClients.all
-if @vip_clients.any?
-  Birthday.greetings(@vip_clients)
-end
+ return Birthday.greetings(@vip_clients) if @vip_clients.any?
 end
 
