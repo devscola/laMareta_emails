@@ -3,7 +3,7 @@ require './helpers/send_email'
 
 module Birthday
 
-  include SendEmail
+  helpers SendEmail
 
   def greetings
     @vip_clients.each do |client|
