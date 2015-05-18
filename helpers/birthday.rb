@@ -3,6 +3,8 @@ require './helpers/send_email'
 
 module Birthday
 
+  include SendEmail
+
   def greetings(vip_clients)
     vip_clients.each do |client|
       next unless birthday_is_today?(client)
