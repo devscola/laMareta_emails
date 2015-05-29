@@ -8,9 +8,15 @@ require './models/invitations.rb'
 
 include Birthday
 
-DataMapper.setup(:default, ENV['DATABASE_URL'])
+configure :development, :test do
+  DataMapper.setup(:default, 'postgres://postgres@localhost/usersmareta')
+end
 
-get '/' do
+configure :production do
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
+def send_emails
   vip_clients = VipClients.all
   Birthday.greetings(vip_clients)
   halt 200
