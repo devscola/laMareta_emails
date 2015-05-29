@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'data_mapper'
 
 require './helpers/birthday'
@@ -6,9 +6,9 @@ require './helpers/birthday'
 require './models/vip_clients.rb'
 require './models/invitations.rb'
 
-class LaMaretaEmails < Sinatra::Base
+include Birthday
 
-  include Birthday
+class LaMaretaEmails < Sinatra::Base
 
   configure :development, :test do
     DataMapper.setup(:default, 'postgres://postgres@localhost/usersmareta')
