@@ -19,5 +19,4 @@ end
 def send_emails
   vip_clients = VipClients.all
   Birthday.greetings(vip_clients)
-  halt 200
 end
