@@ -1,5 +1,6 @@
 
 require './helpers/send_email'
+include SendEmail
 
 module Birthday
 
