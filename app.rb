@@ -1,26 +1,18 @@
 require 'sinatra/base'
-require 'data_mapper'
-
-require './helpers/birthday'
-
-require './models/vip_clients.rb'
-require './models/invitations.rb'
-
-include Birthday
+require './lib/email_sender'
 
 class LaMaretaEmails < Sinatra::Base
 
   configure :development, :test do
-    DataMapper.setup(:default, 'postgres://postgres@localhost/usersmareta')
+    EmailSender.setup('postgres://postgres@localhost/usersmareta')
   end
 
   configure :production do
-    DataMapper.setup(:default, ENV['DATABASE_URL'])
+    EmailSender.setup(ENV['DATABASE_URL'])
   end
 
   get '/' do
-    vip_clients = VipClients.all
-    Birthday.greetings(vip_clients)
+    EmailSender.send
     halt 200
   end
 end

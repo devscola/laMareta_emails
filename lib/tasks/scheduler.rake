@@ -1,4 +1,5 @@
 desc 'This task is called by the Heroku scheduler add-on'
 task :scheduler do
-  LaMaretaEmails.run!
+  EmailSender.setup(ENV['DATABASE_URL'])
+  EmailSender.send
 end
