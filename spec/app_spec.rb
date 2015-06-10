@@ -1,10 +1,8 @@
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require "rack/test"
 
-set :enviroment, :test
-
 def app
-  Sinatra::Application
+  LaMaretaEmails
 end
 
 describe 'App Service' do
